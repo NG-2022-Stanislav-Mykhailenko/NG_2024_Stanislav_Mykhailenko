@@ -1,7 +1,10 @@
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
-    std::cout << "Stanislav" << std::endl << "Mykhailenko" << std::endl;
+    cout << "Stanislav" << endl;
+    cout << "Mykhailenko" << endl;
     return 0;
 }

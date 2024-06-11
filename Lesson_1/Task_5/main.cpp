@@ -2,6 +2,8 @@
 #include <complex>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     float a = 0;
@@ -9,24 +11,24 @@ int main()
     float c = 0;
     float D = 0;
 
-    std::cout << "Enter a: ";
-    std::cin >> a;
+    cout << "Enter a: ";
+    cin >> a;
 
-    std::cout << "Enter b: ";
-    std::cin >> b;
+    cout << "Enter b: ";
+    cin >> b;
 
-    std::cout << "Enter c: ";
-    std::cin >> c;
+    cout << "Enter c: ";
+    cin >> c;
 
     D = pow(b, 2) - 4 * a * c;
 
-    std::complex<float> root = std::sqrt(std::complex<float>(D));
+    complex<float> root = sqrt(complex<float>(D));
 
-    std::complex<float> x1 = (-b + root) / (2 * a);
-    std::complex<float> x2 = (-b - root) / (2 * a);
+    complex<float> x1 = (-b + root) / (2 * a);
+    complex<float> x2 = (-b - root) / (2 * a);
 
-    std::cout << "x1 = " << x1 << std::endl;
-    std::cout << "x2 = " << x2 << std::endl;
+    cout << "x1 = " << x1 << endl;
+    cout << "x2 = " << x2 << endl;
 
     return 0;
 }

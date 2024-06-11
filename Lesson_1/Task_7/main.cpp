@@ -1,6 +1,8 @@
 #include <cmath>
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     float x = 0;
@@ -8,23 +10,21 @@ int main()
     float N = 0;
     float distance = 0;
 
-    std::cout << "x = ";
-    std::cin >> x;
+    cout << "Enter your x: ";
+    cin >> x;
 
-    std::cout << "y = ";
-    std::cin >> y;
+    cout << "Enter your y: ";
+    cin >> y;
 
-    std::cout << "N = ";
-    std::cin >> N;
-
-    if (x > N || y > N) {
-        std::cout << "Beyond radius." << std::endl;
-        return 1;
-    }
+    cout << "Enter radius N: ";
+    cin >> N;
 
     distance = sqrt(pow(x, 2) + pow(y, 2));
 
-    std::cout << distance << std::endl;
+    cout << distance << " from the center";
+    if (distance > N)
+    	cout << " (beyond radius)";
+    cout << endl;
 
     return 0;
 }

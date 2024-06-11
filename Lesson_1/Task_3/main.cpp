@@ -1,21 +1,23 @@
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     int money = 0;
-    std::cout << "How much money do you earn? ";
-    std::cin >> money;
+    cout << "How much money do you earn? ";
+    cin >> money;
 
     if (money < 1000)
-        std::cout << "Work more. ";
+        cout << "Work more. ";
     if (money > 1000) {
         if (money > 1000000)
-            std::cout << "You are a millionaire. ";
+            cout << "You are a millionaire. ";
         if (money < 1000000)
-            std::cout << "You work great. ";
+            cout << "You work great. ";
     }
 
-    std::cout << "You are doing great!" << std::endl;
+    cout << "You are doing great!" << endl;
 
     return 0;
 }

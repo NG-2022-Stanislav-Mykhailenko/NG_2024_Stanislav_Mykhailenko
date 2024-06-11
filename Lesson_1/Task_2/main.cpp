@@ -1,17 +1,19 @@
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     float firstNumber = 0;
     float secondNumber = 0;
 
-    std::cout << "Enter the first number: ";
-    std::cin >> firstNumber;
+    cout << "Enter the first number: ";
+    cin >> firstNumber;
 
-    std::cout << "Enter the second number: ";
-    std::cin >> secondNumber;
+    cout << "Enter the second number: ";
+    cin >> secondNumber;
 
-    std::cout << firstNumber + secondNumber << std::endl;
+    cout << firstNumber + secondNumber << endl;
 
     return 0;
 }

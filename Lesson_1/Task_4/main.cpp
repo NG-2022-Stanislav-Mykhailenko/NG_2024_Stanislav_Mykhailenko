@@ -1,20 +1,22 @@
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
     float firstNumber = 0;
     float secondNumber = 0;
     float result = 0;
-    char operation;
+    char operation = 0;
 
-    std::cout << "Enter the first number: ";
-    std::cin >> firstNumber;
+    cout << "Enter the first number: ";
+    cin >> firstNumber;
 
-    std::cout << "Enter the second number: ";
-    std::cin >> secondNumber;
+    cout << "Enter the second number: ";
+    cin >> secondNumber;
 
-    std::cout << "Enter operation: ";
-    std::cin >> operation;
+    cout << "Enter operation: ";
+    cin >> operation;
 
     switch (operation) {
         case '+':
@@ -28,18 +30,18 @@ int main()
             break;
         case '/':
             if (secondNumber == 0) {
-                std::cout << "Division by zero" << std::endl;
+                cout << "Division by zero" << endl;
                 return 1;
             }
             result = firstNumber / secondNumber;
             break;
         default:
-            std::cout << "Unknown operation." << std::endl;
+            cout << "Unknown operation." << endl;
             return 2;
             break;
     }
 
-    std::cout << result << std::endl;
+    cout << result << endl;
 
     return 0;
 }
