@@ -17,3 +17,10 @@ Checked means the task is Done.
 - [x] Task 5
 - [x] Task 6
 - [x] Task 7
+
+### Lesson 2
+
+- [ ] Task 1
+- [ ] Task 2
+- [ ] Task 3
+- [ ] Task 4
