@@ -10,10 +10,10 @@ int main()
     int words = 1;
 
     for (int character = 0; character < 256; ++character) {
-        if (str[character] == ' ')
-            ++words;
-        else if (str[character] == 0)
+        if (str[character] == 0)
             break;
+        else if (str[character] < 'A' || str[character] > 'z')
+            ++words;
     }
 
     cout << "Number of words: " << words << endl;
