@@ -8,12 +8,17 @@ int main()
     cout << "Enter some string: ";
     cin.getline(str, 256);
     int words = 1;
+    bool space = false;
 
-    for (int character = 0; character < 256; ++character) {
-        if (str[character] == 0)
-            break;
-        else if (str[character] < 'A' || str[character] > 'z')
-            ++words;
+    for (int character = 0; str[character] != 0; ++character) {
+        if (str[character] < 'A' || str[character] > 'z') {
+            if (!space) {
+                ++words;
+                space = true;
+            }
+        } else
+            space = false;
+
     }
 
     cout << "Number of words: " << words << endl;
