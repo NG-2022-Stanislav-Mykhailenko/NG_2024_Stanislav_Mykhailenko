@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "childautomobile.h"
 #include <QListWidget>
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -26,6 +27,7 @@ private:
     Ui::AutoService *ui;
     QVector<ChildAutomobile *> m_automobiles;
     void addAutomobile(ChildAutomobile*);
+    void generateAutomobiles();
     void select(QListWidgetItem *);
 };
 #endif // AUTOSERVICE_H

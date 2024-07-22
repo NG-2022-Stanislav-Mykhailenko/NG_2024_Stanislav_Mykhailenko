@@ -10,34 +10,7 @@ AutoService::AutoService(QWidget *parent)
     connect(ui->b_filter, &QPushButton::clicked, this, &AutoService::filter);
     connect(ui->l_automobiles, &QListWidget::itemClicked, this, &AutoService::select);
 
-    ChildAutomobile* automobile1 = new ChildAutomobile();
-    ChildAutomobile* automobile2 = new ChildAutomobile();
-    ChildAutomobile* automobile3 = new ChildAutomobile();
-
-    automobile1->setManufacturer("Rolls-Royce");
-    automobile1->setModel((QString)"Wraith");
-    automobile1->setType("Coupé");
-    automobile1->setPrice(343350);
-    automobile1->setSeats(4);
-    automobile1->setColor(QColor(19, 25, 98));
-
-    automobile2->setManufacturer("Hyundai");
-    automobile2->setModel((QString)"Santa Cruz");
-    automobile2->setType("Pickup truck");
-    automobile2->setPrice(26900);
-    automobile2->setSeats(5);
-    automobile2->setColor(QColor(143, 144, 139));
-
-    automobile3->setManufacturer("JAC");
-    automobile3->setModel((QString)"Shuailing T6");
-    automobile3->setType("Pickup truck");
-    automobile3->setPrice(13778);
-    automobile3->setSeats(5);
-    automobile3->setColor(QColor(221, 225, 228));
-
-    m_automobiles.append(automobile1);
-    m_automobiles.append(automobile2);
-    m_automobiles.append(automobile3);
+    generateAutomobiles();
 }
 
 AutoService::~AutoService()
@@ -49,11 +22,14 @@ void AutoService::filter()
 {
     ui->l_automobiles->clear();
     ui->e_selected->clear();
+    bool manufacturerEmpty = ui->e_manufacturer->text().isEmpty();
+    bool typeEmpty = ui->e_type->text().isEmpty();
+    bool priceEmpty = ui->e_price->text().isEmpty();
     for (int automobile = 0; automobile < m_automobiles.size(); ++automobile) {
         if (
-            ((ui->e_manufacturer->text().isEmpty()) || m_automobiles[automobile]->getManufacturer() == ui->e_manufacturer->text())
-            && ((ui->e_type->text().isEmpty()) || (m_automobiles[automobile]->getType() == ui->e_type->text()))
-            && ((ui->e_price->text().isEmpty()) || (m_automobiles[automobile]->getPrice() >= ui->e_price->text().toInt()))
+            (manufacturerEmpty || m_automobiles[automobile]->getManufacturer() == ui->e_manufacturer->text())
+            && (typeEmpty || (m_automobiles[automobile]->getType().contains(ui->e_type->text())))
+            && (priceEmpty || (m_automobiles[automobile]->getPrice() <= ui->e_price->text().toInt()))
             )
                 addAutomobile(m_automobiles[automobile]);
 
@@ -63,6 +39,35 @@ void AutoService::filter()
 void AutoService::addAutomobile(ChildAutomobile * automobile)
 {
     ui->l_automobiles->addItem(automobile->getManufacturer() + " " + automobile->getModel());
+}
+
+void AutoService::generateAutomobiles()
+{
+    QStringList manufacturers = {"Audi", "Bentley", "Ford", "Honda", "Hyundai", "JAC", "Jeep", "Rolls-Royce", "Toyota", "Volkswagen"};
+    QStringList models = {"A3", "Accord", "Atlas", "Bronco", "Cherokee", "Colorado Crew Cab", "Continental GT", "Santa Cruz", "Shuailing T6", "Wraith"};
+    QStringList types = {"Coupé", "Pickup truck"};
+
+    for (int automobile = 0; automobile < 10; ++automobile) {
+        ChildAutomobile* newAutomobile = new ChildAutomobile();
+        QString manufacturer = manufacturers[QRandomGenerator::global()->bounded(manufacturers.size())];
+        newAutomobile->setManufacturer(manufacturer);
+        int modelNumber = QRandomGenerator::global()->bounded(models.size());
+        QString model = models[modelNumber];
+        newAutomobile->setModel(model);
+        models.removeAt(modelNumber);
+        QString type = types[QRandomGenerator::global()->bounded(types.size())];
+        newAutomobile->setType(type);
+        int price = QRandomGenerator::global()->bounded(10000, 500000);
+        newAutomobile->setPrice(price);
+        int seats = QRandomGenerator::global()->bounded(5, 10);
+        newAutomobile->setSeats(seats);
+        int colorR = QRandomGenerator::global()->bounded(0, 256);
+        int colorG = QRandomGenerator::global()->bounded(0, 256);
+        int colorB = QRandomGenerator::global()->bounded(0, 256);
+        newAutomobile->setColor(QColor(colorR, colorG, colorB));
+
+        m_automobiles.append(newAutomobile);
+    }
 }
 
 void AutoService::select(QListWidgetItem * item)
