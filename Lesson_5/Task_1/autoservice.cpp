@@ -1,6 +1,5 @@
 #include "autoservice.h"
 #include "ui_autoservice.h"
-#include <QDebug>
 
 AutoService::AutoService(QWidget *parent)
     : QMainWindow(parent)
@@ -26,10 +25,13 @@ void AutoService::filter()
     bool typeEmpty = ui->e_type->text().isEmpty();
     bool priceEmpty = ui->e_price->text().isEmpty();
     for (int automobile = 0; automobile < m_automobiles.size(); ++automobile) {
+        bool manufacturerMatch = m_automobiles[automobile]->getManufacturer() == ui->e_manufacturer->text();
+        bool typeMatch = m_automobiles[automobile]->getType().contains(ui->e_type->text());
+        bool priceMatch = m_automobiles[automobile]->getPrice() <= ui->e_price->text().toInt();
         if (
-            (manufacturerEmpty || m_automobiles[automobile]->getManufacturer() == ui->e_manufacturer->text())
-            && (typeEmpty || (m_automobiles[automobile]->getType().contains(ui->e_type->text())))
-            && (priceEmpty || (m_automobiles[automobile]->getPrice() <= ui->e_price->text().toInt()))
+            (manufacturerEmpty || manufacturerMatch)
+            && (typeEmpty || typeMatch)
+            && (priceEmpty || priceMatch)
             )
                 addAutomobile(m_automobiles[automobile]);
 
