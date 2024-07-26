@@ -47,7 +47,7 @@ private:
     float m_operand1;
     bool m_operand1Set = false;
     float m_operand2;
-    QChar m_operator = 0;
+    QChar m_operator = (QChar)0;
     bool m_done = false;
 
 };
