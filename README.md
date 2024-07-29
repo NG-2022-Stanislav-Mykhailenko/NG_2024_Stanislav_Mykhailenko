@@ -27,7 +27,11 @@ Checked means the task is Done.
 
 ### Lesson 5
 
+- [x] Task 1
+- [x] Task 2
+- [x] Task 3
+- [x] Task 4
+
+### Lesson 6
+
 - [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
-- [ ] Task 4
