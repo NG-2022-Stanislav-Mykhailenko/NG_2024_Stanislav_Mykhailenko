@@ -26,12 +26,12 @@ void Client::sendFile()
     QFileInfo fi(m_fileName);
 
     if (file.open(QIODevice::ReadOnly)) {
-        m_socket->write((fi.fileName() + '\n').toLocal8Bit());
+        m_socket->write((fi.fileName() + '\n').toUtf8());
 
         QTextStream in(&file);
 
         while (!in.atEnd())
-            m_socket->write((in.readLine() + '\n').toLocal8Bit());
+            m_socket->write((in.readLine() + '\n').toUtf8());
     }
 
     ui->l_status->setText("File sent");

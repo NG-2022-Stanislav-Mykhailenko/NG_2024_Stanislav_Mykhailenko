@@ -58,7 +58,7 @@ void Server::messageFromClient()
     QFile file(fileName);
     if (file.open(QIODevice::Append)) {
         for (int line = 0; line < lines.size(); ++ line) {
-            file.write((lines[line] + '\n').toLocal8Bit());
+            file.write((lines[line] + '\n').toUtf8());
         }
     }
 
