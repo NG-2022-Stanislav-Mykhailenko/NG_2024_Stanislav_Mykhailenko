@@ -26,9 +26,9 @@ void LlmMathQuiz::submit()
     ui->e_user->setReadOnly(true);
     ui->l_opinion->setText("Generating…");
 
-    sendPrompt("The two following lines will contain two answers. Respond with \"true\" if they are the same, and \"false\" if they are not. Always use lowercase."
-               + QString("\n") + ui->e_user->text()
-               + QString("\n") + m_llmAnswer);
+    sendPrompt("The two following lines will contain two answers for a mathematical task. The first value is the expected answer, and the second one is the answer provided. Respond with \"true\" if the provided answer matches the expected answer, and \"false\" if it is not. Always use lowercase."
+               + QString("\n") + m_llmAnswer
+               + QString("\n") + ui->e_user->text());
 }
 
 void LlmMathQuiz::generate()
@@ -44,7 +44,7 @@ void LlmMathQuiz::generate()
     ui->e_llm->clear();
     ui->l_opinion->setText("Not checked");
 
-    sendPrompt("Generate a mathematical task and a correct answer for it. Both the task and the answer need to take only one line. Provide the task on the first line, and the answer on the second line.");
+    sendPrompt("Generate a math task and a correct answer for it. The task can be anything from simple equations, to logical tasks. Both the task and the answer need to take only one line. Provide the task on the first line, and the answer on the second line. Never use equation 2x + 5 = 11.");
 }
 
 void LlmMathQuiz::newAnswer(QNetworkReply *reply)
