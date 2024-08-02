@@ -34,7 +34,7 @@ Checked means the task is Done.
 
 ### Lesson 6
 
-- [ ] Task 1
+- [x] Task 1
 
 ### Lesson 8
 
