@@ -32,13 +32,21 @@ void LlmMathQuiz::submit()
         ui->l_match->setText("False");
 
     ui->b_generate->setEnabled(true);
+
+    if (ui->l_number->text().toInt() == 10)
+        ui->l_score->setText("Final score:");
 }
 
 void LlmMathQuiz::generate()
 {
     if (m_taskReceived) {
-        ui->l_number->setText(QString::number(ui->l_number->text().toInt() + 1));
         m_taskReceived = false;
+        if (ui->l_number->text().toInt() == 10) {
+            ui->l_number->setText(QString::number(0));
+            ui->l_matched->setText(QString::number(0));
+            ui->l_score->setText("Answers matched:");
+        } else
+            ui->l_number->setText(QString::number(ui->l_number->text().toInt() + 1));
     }
     m_taskReceived = false;
     ui->b_generate->setEnabled(false);
