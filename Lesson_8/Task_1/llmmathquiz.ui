@@ -74,12 +74,12 @@
       <item>
        <widget class="QLabel" name="label_6">
         <property name="text">
-         <string>LLM opinion:</string>
+         <string>Answer match:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="l_opinion">
+       <widget class="QLabel" name="l_match">
         <property name="text">
          <string>Not checked</string>
         </property>
