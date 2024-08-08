@@ -38,4 +38,4 @@ Checked means the task is Done.
 
 ### Lesson 8
 
-- [ ] Task 1
+- [x] Task 1
